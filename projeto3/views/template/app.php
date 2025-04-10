@@ -1,15 +1,3 @@
-<?php
-
-require 'dados.php';
-
-$id = $_REQUEST['id'];
-
-$filtro = array_filter($livros, fn($l) => $l['id'] == $id);
-
-$livro = array_pop($filtro);
-
-?>
-
 <!doctype html>
 <html>
 
@@ -36,13 +24,8 @@ $livro = array_pop($filtro);
     </header>
 
     <main class="mx-auto max-w-screen-lg space-y-6">
-        <section class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-5">
-
-            <h1> <?= $livro['titulo']; ?> </h1>
-            <h1> <?= $livro['autor']; ?> </h1>
-            <p> <?= $livro['descricao']; ?> </p>
-
-        </section>
+        // Mostra o resultado da rota do controller que passou
+         <?php require "views/{$view}.view.php"; ?>
     </main>
 
 </body>
