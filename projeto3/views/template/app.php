@@ -24,8 +24,9 @@
     </header>
 
     <main class="mx-auto max-w-screen-lg space-y-6">
-        // Mostra o resultado da rota do controller que passou
+
          <?php require "views/{$view}.view.php"; ?>
+         
     </main>
 
 </body>
