@@ -1,5 +1,6 @@
 <?php
 
+// Redireciona a rota e alinha o array de dados
 function view($view, $data = []){
     foreach($data as $key => $value){
         $$key = $value;
@@ -8,6 +9,7 @@ function view($view, $data = []){
     require "views/template/app.php";
 }
 
+// Disseca o dado ou array selecionado (os '...' são para se for varios dados sem ser array)
 function dd(...$dump){
     echo '<pre>';
     var_dump($dump);
@@ -15,6 +17,7 @@ function dd(...$dump){
     die();
 }
 
+// Mostra o erro 404
 function abort($code){
     http_response_code(404);
     view($code);
