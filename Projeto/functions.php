@@ -1,8 +1,12 @@
 <?php
 
 // Redireciona a rota e alinha o array de dados
-function view($view, $data = []){
-    foreach($data as $key => $value){
+function view($view, $data1 = [], $data2 = []){
+    foreach($data1 as $key => $value){
+        $$key = $value;
+    }
+
+    foreach($data2 as $key => $value){
         $$key = $value;
     }
 
