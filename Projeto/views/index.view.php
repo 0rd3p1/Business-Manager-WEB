@@ -13,13 +13,13 @@
             <div class="flex">
                 <div class="w-1/3">Imagem</div>
                 <div>
-                    <a href="/livro?id=<?= $livro['id']; ?>" class="font-semibold hover:underline"><?= $livro['titulo']; ?></a>
-                    <div class="text-xs italic"><?= $livro['autor']; ?></div>
+                    <a href="/livro?id=<?= $livro->id; ?>" class="font-semibold hover:underline"><?= $livro->titulo; ?></a>
+                    <div class="text-xs italic"><?= $livro->diretor; ?></div>
                     <div>⭐⭐⭐⭐⭐</div>
                 </div>
             </div>
             <div>
-                <?= $livro['descricao']; ?>
+                <?= $livro->descricao; ?>
             </div>
         </div>
     <?php endforeach; ?>
@@ -34,13 +34,13 @@
                 <div class="w-1/3">Imagem</div>
                 <div>
                     <!-- Mostra o caminho para a busca no array -->
-                    <a href="/filme?id=<?= $filme['id']; ?>" class="font-semibold hover:underline"><?= $filme['titulo']; ?></a>
-                    <div class="text-xs italic"><?= $filme['diretor']; ?></div>
+                    <a href="/filme?id=<?= $filme->id; ?>" class="font-semibold hover:underline"><?= $filme->titulo; ?></a>
+                    <div class="text-xs italic"><?= $filme->diretor; ?></div>
                     <div>⭐⭐⭐⭐⭐</div>
                 </div>
             </div>
             <div>
-                <?= $filme['sinopse']; ?>
+                <?= $filme->sinopse; ?>
             </div>
         </div>
     <?php endforeach; ?>
