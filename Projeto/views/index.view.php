@@ -14,7 +14,7 @@
                 <div class="w-1/3">Imagem</div>
                 <div>
                     <a href="/livro?id=<?= $livro->id; ?>" class="font-semibold hover:underline"><?= $livro->titulo; ?></a>
-                    <div class="text-xs italic"><?= $livro->diretor; ?></div>
+                    <div class="text-xs italic"><?= $livro->autor; ?></div>
                     <div>⭐⭐⭐⭐⭐</div>
                 </div>
             </div>

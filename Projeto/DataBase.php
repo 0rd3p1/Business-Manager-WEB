@@ -1,5 +1,9 @@
 <?php
 
+// Puxa os modelos dos dados
+require 'models/Filme.php';
+require 'models/Livro.php';
+
 class DB {
     private $db;
 
@@ -14,7 +18,8 @@ class DB {
     }
 
     public function livro($id){
-        $query = $this->db->query("SELECT * FROM livros WHERE id = $id");
+        $query = $this->db->prepare("SELECT * FROM livros WHERE id = :id");
+        $query->execute(['id' => $id]);
         $items = $query->fetchAll();
         return array_map(fn($item) => Livro::make($item), $items)[0];
     }
@@ -22,13 +27,14 @@ class DB {
     public function filmes(){
         $query = $this->db->query("SELECT * FROM filmes");
         $items = $query->fetchAll();
-        return array_map(fn($item) => Livro::make($item), $items);
+        return array_map(fn($item) => Filme::make($item), $items);
     }
 
     public function filme($id){
-        $query = $this->db->query("SELECT * FROM filmes WHERE id = $id");
+        $query = $this->db->prepare("SELECT * FROM filmes WHERE id = :id");
+        $query->execute(['id' => $id]);
         $items = $query->fetchAll();
-        return array_map(fn($item) => Livro::make($item), $items)[0];
+        return array_map(fn($item) => Filme::make($item), $items)[0];
     }
 }
 

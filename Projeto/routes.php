@@ -8,7 +8,7 @@ if(!$controller) $controller = 'index';
 
 // Verifica se a rota existe
 if(!file_exists("controllers/{$controller}.controller.php")){
-    // Abre a função erro 404
+    // Se nao existe, abre a função erro 404
     abort(404);
 }
 
