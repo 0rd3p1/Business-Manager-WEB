@@ -1,9 +1,5 @@
 <?php
 
-// Puxa os modelos dos dados
-require 'models/Filme.php';
-require 'models/Livro.php';
-
 class DB {
     private $db;
 
