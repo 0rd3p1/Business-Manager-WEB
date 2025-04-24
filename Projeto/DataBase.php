@@ -7,6 +7,18 @@ class DB {
         $this->db = new PDO('sqlite:db.sqlite');
     }
 
+    public function query($query, $class = null, $params = []){
+        $prepare = $this->db->prepare($query);
+
+        if($class){
+            $prepare->setFetchMode(PDO::FETCH_CLASS, $class);
+        }
+        
+        $prepare->execute($params);
+        return $prepare;
+    }
+
+    /*
     public function livros(){
         $query = $this->db->query("SELECT * FROM livros");
         $items = $query->fetchAll();
@@ -32,6 +44,7 @@ class DB {
         $items = $query->fetchAll();
         return array_map(fn($item) => Filme::make($item), $items)[0];
     }
+    */
 }
 
 ?>

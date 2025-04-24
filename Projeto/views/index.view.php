@@ -1,5 +1,5 @@
-<form action="livro.php" class="w-full flex space-x-2 mt-6">
-    <input type="text"
+<form action="" class="w-full flex space-x-2 mt-6">
+    <input type="text" name="pesquisar"
         class="border-stone-800 border-2 rounded-md bg-stone-900 text-sm focus:outline-none px-2 py-1"
         placeholder="Pesquisar..." />
     <button type="submit">Pesquisar</button>

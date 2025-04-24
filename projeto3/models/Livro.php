@@ -7,15 +7,10 @@ class Livro
     public $titulo;
     public $autor;
     public $descricao;
+    public $anoDeLancamento;
+    public $usuarioId;
+    public $imagem;
 
+    
 
-    public static function make($item)
-    {
-        $livro = new Livro();
-        $livro->id = $item['id'];
-        $livro->titulo = $item['titulo'];
-        $livro->autor = $item['autor'];
-        $livro->descricao = $item['descricao'];
-        return $livro;
-    }
 }
