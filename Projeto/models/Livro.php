@@ -5,6 +5,7 @@ class Livro {
     public $titulo;
     public $autor;
     public $descricao;
+    public $imagem;
     
     /*
     public static function make($item) {

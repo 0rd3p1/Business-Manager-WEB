@@ -5,6 +5,7 @@ class Filme {
     public $titulo;
     public $diretor;
     public $sinopse;
+    public $imagem;
     
     /*
     public static function make($item) {
