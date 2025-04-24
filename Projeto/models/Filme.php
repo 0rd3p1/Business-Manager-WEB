@@ -6,6 +6,7 @@ class Filme {
     public $diretor;
     public $sinopse;
     
+    /*
     public static function make($item) {
         $filme = new Filme();
         $filme->id = $item['id'];
@@ -14,6 +15,7 @@ class Filme {
         $filme->sinopse = $item['sinopse'];
         return $filme;
     }
+    */
 }
 
 ?>

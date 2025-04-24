@@ -6,6 +6,7 @@ class Livro {
     public $autor;
     public $descricao;
     
+    /*
     public static function make($item) {
         $livro = new Livro();
         $livro->id = $item['id'];
@@ -14,6 +15,7 @@ class Livro {
         $livro->descricao = $item['descricao'];
         return $livro;
     }
+    */
 }
 
 ?>
