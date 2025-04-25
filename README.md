@@ -1,5 +1,5 @@
 ## Business-Manager-WEB
-# Este repositório é destinado ao Projeto Integrador final denominado Business-Manager-WEB do curso Técnico em TI do Senac
+Este repositório é destinado ao Projeto Integrador final denominado Business-Manager-WEB do curso Técnico em TI do Senac
 
 # Linguagens
 Neste projeto será utilizado PHP, HTML, TailWind, Java e SQLite.
