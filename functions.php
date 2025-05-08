@@ -7,7 +7,7 @@ function dd(...$dump){
     die();
 }
 
-function view($view, $data = []){
+function view($route, $data = []){
     foreach($data as $key => $value){
         $$key = $value;
     }
