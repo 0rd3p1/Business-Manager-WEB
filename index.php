@@ -4,7 +4,8 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-require 'models/Account.php';
+require 'models/User.php';
+require 'models/Business.php';
 require 'models/Product.php';
 
 require 'functions.php';

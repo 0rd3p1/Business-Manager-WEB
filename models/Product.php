@@ -3,10 +3,9 @@
 class Product {
     public $id;
     public $name;
-    public $price;
+    public $value;
     public $description;
     public $image;
-    public $code;
 }
 
 ?>

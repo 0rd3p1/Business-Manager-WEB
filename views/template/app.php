@@ -7,25 +7,36 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="bg-stone-950 text-stone-200">
-    <header class="bg-stone-900">
-        <nav class="flex justify-around py-5">
-            <ul class="flex font-bold">
-                <li><a href="/" class="font-extrabold text-xl tracking-wide">Business Manager WEB</a></li>
-            </ul>
-            <ul class="flex font-bold">
-                <li><a href="../usuario.view.php" class="hover:underline font-bold"><?php if (!isset($_SESSION['id'])) echo "Login"; else echo "Conta" ?></a></li>
-            </ul>
-        </nav>
+<body class="bg-gray-50 text-gray-800">
+    <header class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600"><a href="/">Business Manager WEB</a></h1>
+            <nav class="space-x-6">
+                <?php if (isset($_SESSION['id'])) { ?>
+                    <a href="product" class="text-gray-600 hover:text-blue-600">Produtos</a>
+                    <a href="business" class="text-gray-600 hover:text-blue-600">Empresas</a>
+                    <a href="user" class="text-gray-600 hover:text-blue-600">Conta</a>
+                <?php } else { ?>
+                    <a href="register" class="text-gray-600 hover:text-blue-600">Registrar-se</a>
+                    <a href="login" class="text-gray-600 hover:text-blue-600">Entrar</a>
+                <?php } ?>
+            </nav>
+        </div>
     </header>
 
-    <main class="mx-auto max-w-screen-lg space-y-6">
-        <!-- Mostra a rota final -->
+    <main>
         <?php require "views/{$route}.view.php"; ?>
     </main>
 
-    <footer class="bg-stone-950 text-stone-200">
-
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm">
+            <p>&copy; 2025 Business Manager WEB. Todos os direitos reservados.</p>
+            <div class="space-x-4 mt-2 md:mt-0">
+                <a href="#" class="hover:underline">Privacidade</a>
+                <a href="#" class="hover:underline">Termos</a>
+                <a href="#" class="hover:underline">Ajuda</a>
+            </div>
+        </div>
     </footer>
 </body>
 
