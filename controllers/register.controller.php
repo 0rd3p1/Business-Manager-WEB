@@ -11,9 +11,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['validation'] = $validation->validations;
         header('Location: /register');
         exit();
+    } else {
+        $hash = password_hash($_POST['pswd'], PASSWORD_DEFAULT);
     }
 
-    $hash = password_hash($_POST['pswd'], PASSWORD_DEFAULT);
+    $auth = $db->query(
+        query: 'SELECT * FROM users WHERE email = :email',
+        params: [
+            'email' => $_POST['email']
+        ]
+    );
+
+    if ($auth) {
+        $_SESSION['error'] = "Email ja cadastrado!";
+    }
 
     $db->query(
         query: 'INSERT INTO users (name, email, pswd) VALUES (:name, :email, :pswd)',

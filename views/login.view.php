@@ -2,13 +2,13 @@
   <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
     <h2 class="text-2xl font-bold mb-6 text-center">Entrar</h2>
     <form method="POST" class="space-y-4">
-      <?php if (isset($_SESSION['message'])): ?>
-        <div class="bg-red-500 text-white px-4 py-1 rounded-lg border-2 font-bold">
-          <?= $_SESSION['message'] ?>
+      <?php if (isset($_SESSION['error'])): ?>
+        <div class="flex place-content-center bg-red-500 text-white px-4 py-1 rounded font-bold">
+          <?= $_SESSION['error'] ?>
         </div>
-      <?php endif; unset($_SESSION['message']) ?>
+      <?php endif; unset($_SESSION['error']) ?>
       <?php if (isset($_SESSION['validation'])): ?>
-        <div class="bg-red-500 text-white px-4 py-1 rounded-lg border-2 text-sm font-bold">
+        <div class="bg-red-500 text-white px-4 py-1 rounded text-sm font-bold">
           <ul>
             <li>Erro de validação</li>
             <?php foreach ($_SESSION['validation'] as $validation): ?>

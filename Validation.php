@@ -3,6 +3,10 @@
 class Validation {
     public $validations;
 
+    public function __construct() {
+        $this->validations = [];
+    }
+
     public static function validate($rules, $data) {
         $validations = new self;
         // $campRules = 'required', 'email', 'confirmed';
@@ -49,19 +53,18 @@ class Validation {
     }
 
     public function min ($min, $camp, $value) {
-        if ($value < $min) {
+        if (strlen($value) < $min) {
             $this->validations[] = "$camp precisa ter no mínimo $min caracteres";
         }
     }
 
     public function max ($max, $camp, $value) {
-        if ($value > $max) {
+        if (strlen($value) > $max) {
             $this->validations[] = "$camp pode ter no máximo $max caracteres";
         }
     }
 
     public function notPass() {
         return sizeof($this->validations) > 0;
-        //!empty($this->validations)
     }
 }
