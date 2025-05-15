@@ -6,7 +6,7 @@
         <div class="border-green-800 bg-green-900 text-green-400 px-4 py-1 rounded-md border-2">
           <?= $_SESSION['message'] ?>
         </div>
-      <?php endif; ?>
+      <?php endif; unset($_SESSION['message']) ?>
       <?php if (isset($_SESSION['validation'])): ?>
         <div class="bg-red-500 text-white px-4 py-1 rounded-lg border-2 text-sm font-bold">
           <ul>
@@ -18,13 +18,13 @@
             ?>
           </ul>
         </div>
-      <?php endif; ?>
+      <?php endif; unset($_SESSION['validation']) ?>
       <div>
         <label for="name" class="block text-sm font-medium">Nome</label>
         <input type="text" name="name" id="name" class="mt-1 w-full p-2 border border-gray-300 rounded">
       </div>
       <div>
-        <label for="email" class="block text-sm font-medium">E-mail</label>
+        <label for="email" class="block text-sm font-medium">Email</label>
         <input type="email" name="email" id="email" class="mt-1 w-full p-2 border border-gray-300 rounded">
       </div>
       <div>
@@ -32,8 +32,8 @@
         <input type="password" name="pswd" id="pswd" class="mt-1 w-full p-2 border border-gray-300 rounded">
       </div>
       <div>
-        <label for="confirm" class="block text-sm font-medium">Confirmar Senha</label>
-        <input type="password" name="confirm" id="confirm" class="mt-1 w-full p-2 border border-gray-300 rounded">
+        <label for="confirmation" class="block text-sm font-medium">Confirmar Senha</label>
+        <input type="password" name="confirmation" id="confirmation" class="mt-1 w-full p-2 border border-gray-300 rounded">
       </div>
       <button type="submit" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition">Registrar</button>
     </form>

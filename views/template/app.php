@@ -12,7 +12,7 @@
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold text-blue-600"><a href="/">Business Manager WEB</a></h1>
             <nav class="space-x-6">
-                <?php if (isset($_SESSION['id'])) { ?>
+                <?php if (isset($_SESSION['idUser'])) { ?>
                     <a href="product" class="text-gray-600 hover:text-blue-600">Produtos</a>
                     <a href="business" class="text-gray-600 hover:text-blue-600">Empresas</a>
                     <a href="user" class="text-gray-600 hover:text-blue-600">Conta</a>

@@ -1,10 +1,12 @@
 <?php
 
-class Account {
+class User {
     public $id;
     public $name;
     public $email;
     public $pswd;
 }
+
+$user = new User();
 
 ?>

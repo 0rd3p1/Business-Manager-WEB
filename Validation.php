@@ -5,20 +5,19 @@ class Validation {
 
     public static function validate($rules, $data) {
         $validations = new self;
-        // $camp = email 
         // $campRules = 'required', 'email', 'confirmed';
         foreach ($rules as $camp => $campRules) {
-            //$rule = required, $rule = email, $rule = $confimed
+            //$rule = required, $rule = email, $rule = confimed
             foreach ($campRules as $rule) {
                 $campValue = $data[$camp];
-                if ($rule == 'confirmed') {
-                    $validations->$rule($camp, $campValue, $data["{$camp}_confirmation"]);
-                }elseif(str_contains($rule, ':')){
+                if ($rule == 'confirm') {
+                    $validations->$rule($camp, $campValue, $data['confirmation']);
+                } elseif (str_contains($rule, ':')){
                     $tmp = explode(':', $rule);
                     $rule = $tmp[0];
                     $ruleAr = $tmp[1];  
                     $validations->$rule($ruleAr, $camp, $campValue);
-                }else {
+                } else {
                     $validations->$rule($camp, $campValue);
                 }
             }
@@ -28,23 +27,23 @@ class Validation {
 
     private function required($camp, $value) {
         if (strlen($value) == 0) {
-            $this->validations[] = "$camp é obrigatório.";
+            $this->validations[] = "$camp é obrigatório";
         }
     }
     private function email($camp, $value) {
         if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-            $this->validations[] = "$camp é inválido.";
+            $this->validations[] = "Email inválido";
         }
     }
 
-    private function confirmed($camp, $value, $confirmValue) {
+    private function confirm($camp, $value, $confirmValue) {
         if ($value != $confirmValue) {
-            $this->validations[] = "$camp de confirmação esta diferente.";
+            $this->validations[] = "$camp de confirmação esta diferente";
         }
     }
 
     public function strong($camp, $value) {
-        if (!strpbrk($value, '!@#$%^*&()')) {
+        if (!strpbrk($value, '!@#$%^*&?.')) {
             $this->validations[] = "$camp precisa ter no mínimo um caracter especial";
         }
     }
@@ -57,11 +56,12 @@ class Validation {
 
     public function max ($max, $camp, $value) {
         if ($value > $max) {
-            $this->validations[] = "$camp precisa ter no maximo $max caracteres";
+            $this->validations[] = "$camp pode ter no máximo $max caracteres";
         }
     }
 
     public function notPass() {
         return sizeof($this->validations) > 0;
+        //!empty($this->validations)
     }
 }

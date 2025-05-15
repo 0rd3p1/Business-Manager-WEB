@@ -20,5 +20,6 @@ require 'ConnectionAPI.php';
 require 'routes.php';
 
 //session_unset();
+//unset($_POST);
 
 ?>

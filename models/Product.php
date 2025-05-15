@@ -8,4 +8,6 @@ class Product {
     public $image;
 }
 
+$product = new Product();
+
 ?>

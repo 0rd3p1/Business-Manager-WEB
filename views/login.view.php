@@ -7,8 +7,20 @@
           <?= $_SESSION['message'] ?>
         </div>
       <?php endif; unset($_SESSION['message']) ?>
+      <?php if (isset($_SESSION['validation'])): ?>
+        <div class="bg-red-500 text-white px-4 py-1 rounded-lg border-2 text-sm font-bold">
+          <ul>
+            <li>Erro de validação</li>
+            <?php foreach ($_SESSION['validation'] as $validation): ?>
+              <li><?= $validation ?></li>
+            <?php endforeach;
+            unset($_SESSION['validation']);
+            ?>
+          </ul>
+        </div>
+      <?php endif; unset($_SESSION['validation']) ?>
       <div>
-        <label for="email" class="block text-sm font-medium">E-mail</label>
+        <label for="email" class="block text-sm font-medium">Email</label>
         <input type="email" name="email" id="email" class="mt-1 w-full p-2 border border-gray-300 rounded">
       </div>
       <div>

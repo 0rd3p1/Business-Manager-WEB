@@ -6,4 +6,6 @@ class Business {
     public $cnpj;
 }
 
+$business = new Business();
+
 ?>
