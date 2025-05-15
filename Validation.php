@@ -5,14 +5,10 @@ class Validation {
 
     public static function validate($rules, $data) {
         $validations = new self;
-
         // $camp = email 
         // $campRules = 'required', 'email', 'confirmed';
-
         foreach ($rules as $camp => $campRules) {
-
             //$rule = required, $rule = email, $rule = $confimed
-
             foreach ($campRules as $rule) {
                 $campValue = $data[$camp];
                 if ($rule == 'confirmed') {
@@ -32,36 +28,36 @@ class Validation {
 
     private function required($camp, $value) {
         if (strlen($value) == 0) {
-            $this->validations[] = "O $camp é obrigatorio.";
+            $this->validations[] = "$camp é obrigatório.";
         }
     }
     private function email($camp, $value) {
         if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-            $this->validations[] = "O $camp é invalido.";
+            $this->validations[] = "$camp é inválido.";
         }
     }
 
     private function confirmed($camp, $value, $confirmValue) {
         if ($value != $confirmValue) {
-            $this->validations[] = "O $camp de confirmação esta diferente.";
+            $this->validations[] = "$camp de confirmação esta diferente.";
         }
     }
 
     public function strong($camp, $value) {
         if (!strpbrk($value, '!@#$%^*&()')) {
-            $this->validations[] = "O $camp precisa ter no minimo um caracter especial";
+            $this->validations[] = "$camp precisa ter no mínimo um caracter especial";
         }
     }
 
     public function min ($min, $camp, $value) {
         if ($value < $min) {
-            $this->validations[] = "O $camp precisa ter no minimo $min caracteres";
+            $this->validations[] = "$camp precisa ter no mínimo $min caracteres";
         }
     }
 
     public function max ($max, $camp, $value) {
         if ($value > $max) {
-            $this->validations[] = "O $camp precisa ter no maximo $max caracteres";
+            $this->validations[] = "$camp precisa ter no maximo $max caracteres";
         }
     }
 

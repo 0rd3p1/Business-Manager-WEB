@@ -8,10 +8,6 @@ if (!file_exists("controllers/{$route}.controller.php")) {
     abort(404);
 }
 
-if (isset($_SESSION['id'])) {
-    $route = 'product';
-}
-
 require "controllers/{$route}.controller.php";
 
 ?>

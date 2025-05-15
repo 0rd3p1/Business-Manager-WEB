@@ -30,4 +30,6 @@ class ConnectionAPI {
     }
 }
 
+$api = new ConnectionAPI('http://localhost:8080');
+
 ?>

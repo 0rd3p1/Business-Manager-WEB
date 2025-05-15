@@ -1,14 +1,27 @@
 <?php
 
-class DB {
-    private $db;
+class DataBase {
+    private $database;
 
-    public function __construct() {   
-        $this->db = new PDO('sqlite:db.sqlite');
+    public function __construct($dbConfig) {   
+        $this->database = new PDO($this->getDns($dbConfig));
+    }
+
+    private function getDns($dbConfig) {
+        $driver = $dbConfig['driver'];
+        unset($dbConfig['driver']);
+
+        $dsn = $driver . ':' . http_build_query($dbConfig, '', ';');
+
+        if($driver == 'sqlite'){
+            $dsn = $driver . ':' . $dbConfig['dbName'];                                                                                                                                                                                       
+        }
+
+        return $dsn;
     }
 
     public function query($query, $class = null, $params = []){
-        $prepare = $this->db->prepare($query);
+        $prepare = $this->database->prepare($query);
 
         if($class){
             $prepare->setFetchMode(PDO::FETCH_CLASS, $class);
@@ -18,5 +31,7 @@ class DB {
         return $prepare;
     }
 }
+
+$db = new DataBase($dbConfig['database']);
 
 ?>
