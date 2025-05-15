@@ -26,6 +26,15 @@
       <div>
         <label for="pswd" class="block text-sm font-medium">Senha</label>
         <input type="password" name="pswd" id="pswd" class="mt-1 w-full p-2 border border-gray-300 rounded">
+        <input type="checkbox" name="showPswd" id="showPswd"><a class="text-sm font-medium"> Mostrar Senha </a>
+        <script>
+          const pswdInput = document.getElementById('pswd');
+          const showPswdCheckbox = document.getElementById('showPswd');
+
+          showPswdCheckbox.addEventListener('change', () => {
+            pswdInput.type = showPswdCheckbox.checked ? 'text' : 'password';
+          });
+        </script>
       </div>
       <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition">Entrar</button>
     </form>
