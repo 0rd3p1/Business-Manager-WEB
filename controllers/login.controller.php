@@ -12,16 +12,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         exit();
     }
 
-    $user = $db->query(
+    $auth = $db->query(
         query: 'SELECT * FROM users WHERE email = :email',
         params: [
             'email' => $_POST['email']
         ]
     )->fetch();
 
-    if ($user) {
-        if(password_verify($_POST['pswd'], $user['pswd'])){
-            $_SESSION['idUser'] = $user['id'];
+    if ($auth) {
+        if(password_verify($_POST['pswd'], $auth['pswd'])){
+            $_SESSION['idUser'] = $auth['id'];
             header('Location: /');
             exit();
         }

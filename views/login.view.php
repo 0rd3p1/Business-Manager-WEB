@@ -20,7 +20,7 @@
         </div>
       <?php endif; unset($_SESSION['validation']) ?>
       <div>
-        <label for="email" class="block text-sm font-medium">Email</label>
+        <label for="email" class="block text-sm font-medium">E-mail</label>
         <input type="email" name="email" id="email" class="mt-1 w-full p-2 border border-gray-300 rounded">
       </div>
       <div>

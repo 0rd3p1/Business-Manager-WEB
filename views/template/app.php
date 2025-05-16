@@ -14,7 +14,7 @@
             <nav class="space-x-6">
                 <?php if (isset($_SESSION['idUser'])) { ?>
                     <a href="product" class="text-gray-600 hover:text-blue-600">Produtos</a>
-                    <a href="business" class="text-gray-600 hover:text-blue-600">Empresas</a>
+                    <a href="business" class="text-gray-600 hover:text-blue-600">Negócios</a>
                     <a href="user" class="text-gray-600 hover:text-blue-600">Conta</a>
                 <?php } else { ?>
                     <a href="register" class="text-gray-600 hover:text-blue-600">Registrar-se</a>

@@ -8,7 +8,7 @@
         </div>
       <?php endif; unset($_SESSION['error']) ?>
       <?php if (isset($_SESSION['message'])): ?>
-        <div class="flex place-content-center bg-green-500 text-white px-4 py-1 rounded">
+        <div class="flex place-content-center bg-green-500 text-white px-4 py-1 rounded font-bold">
           <?= $_SESSION['message'] ?>
         </div>
       <?php endif; unset($_SESSION['message']) ?>
@@ -27,7 +27,7 @@
         <input type="text" name="name" id="name" class="mt-1 w-full p-2 border border-gray-300 rounded">
       </div>
       <div>
-        <label for="email" class="block text-sm font-medium">Email</label>
+        <label for="email" class="block text-sm font-medium">E-mail</label>
         <input type="email" name="email" id="email" class="mt-1 w-full p-2 border border-gray-300 rounded">
       </div>
       <div>

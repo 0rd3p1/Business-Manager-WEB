@@ -20,10 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         params: [
             'email' => $_POST['email']
         ]
-    );
+    )->fetch();
 
     if ($auth) {
         $_SESSION['error'] = "Email ja cadastrado!";
+        header('Location: /register');
+        exit();
     }
 
     $db->query(
