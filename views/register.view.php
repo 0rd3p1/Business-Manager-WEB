@@ -2,16 +2,19 @@
   <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
     <h2 class="text-2xl font-bold mb-6 text-center">Registrar-se</h2>
     <form method="POST" class="space-y-4">
+      <!-- Error -->
       <?php if (isset($_SESSION['error'])): ?>
         <div class="flex place-content-center bg-red-500 text-white px-4 py-1 rounded font-bold">
           <?= $_SESSION['error'] ?>
         </div>
       <?php endif; unset($_SESSION['error']) ?>
+      <!-- Menssagem -->
       <?php if (isset($_SESSION['message'])): ?>
         <div class="flex place-content-center bg-green-500 text-white px-4 py-1 rounded font-bold">
           <?= $_SESSION['message'] ?>
         </div>
       <?php endif; unset($_SESSION['message']) ?>
+      <!-- Validações -->
       <?php if (isset($_SESSION['validation'])): ?>
         <div class="bg-red-500 text-white px-4 py-1 rounded text-sm font-bold">
           <ul>
@@ -22,17 +25,21 @@
           </ul>
         </div>
       <?php endif; unset($_SESSION['validation']) ?>
+      <!-- Nome -->
       <div>
         <label for="name" class="block text-sm font-medium">Nome</label>
         <input type="text" name="name" id="name" class="mt-1 w-full p-2 border border-gray-300 rounded">
       </div>
+      <!-- E-mail -->
       <div>
         <label for="email" class="block text-sm font-medium">E-mail</label>
         <input type="email" name="email" id="email" class="mt-1 w-full p-2 border border-gray-300 rounded">
       </div>
+      <!-- Senha -->
       <div>
         <label for="pswd" class="block text-sm font-medium">Senha</label>
         <input type="password" name="pswd" id="pswd" class="mt-1 w-full p-2 border border-gray-300 rounded">
+        <!-- Mostrar Senha -->
         <input type="checkbox" name="showPswd" id="showPswd"><a class="text-sm font-medium"> Mostrar Senha </a>
         <script>
           const pswdInput = document.getElementById('pswd');

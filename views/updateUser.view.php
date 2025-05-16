@@ -1,5 +1,6 @@
 <?php
 
+// Pega e atribui os campos corretos de dados para alterar
 $field = $_GET['field'] ?? null;
 $fields = [
     'name' => 'Nome',
@@ -11,6 +12,7 @@ $fields = [
     'addr' => 'Endereço'
 ];
 
+// Atribui ao placeholder o exemplo correto de acordo com o dado alterado
 $placeholder = '';
 switch ($field) {
     case 'name':
@@ -39,6 +41,7 @@ switch ($field) {
         </h2>
 
         <form action="updateUser" method="POST" class="space-y-4">
+            <!-- Field -->
             <input type="hidden" name="field" value="<?= htmlspecialchars($field) ?>" />
             <?php if (isset($_SESSION['validation'])): ?>
                 <div class="bg-red-500 text-white px-4 py-1 rounded text-sm font-bold">
@@ -52,6 +55,7 @@ switch ($field) {
                     </ul>
                 </div>
             <?php endif; unset($_SESSION['validation']) ?>
+            <!-- Value -->
             <input
                 type="<?= $field === 'email' ? 'email' : ($field === 'pswd' ? 'password' : ($field === 'bday' ? 'date' : 'text')) ?>"
                 name="value"
@@ -68,7 +72,6 @@ switch ($field) {
                         pswdInput.type = showPswdCheckbox.checked ? 'text' : 'password';
                     });
                 </script>
-
             <?php endif; ?>
             <div class="flex justify-between">
                 <a href="user" class="text-gray-600 hover:underline">Cancelar</a>
