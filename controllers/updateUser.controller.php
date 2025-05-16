@@ -61,10 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         case 'cpf':
             $value = formatCPF($value);
             break;
-        case 'address':
+        case 'addr':
             $value = formatAddress($value);
             break;
-        case 'birthdate':
+        case 'bday':
             $value = formatBirthdate($value);
             break;
     }
