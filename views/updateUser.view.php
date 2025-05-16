@@ -51,11 +51,9 @@ switch ($field) {
                         ?>
                     </ul>
                 </div>
-            <?php endif;
-            unset($_SESSION['validation']) ?>
-
+            <?php endif; unset($_SESSION['validation']) ?>
             <input
-                type="<?= $field === 'email' ? 'email' : ($field === 'pswd' ? 'password' : 'text') ?>"
+                type="<?= $field === 'email' ? 'email' : ($field === 'pswd' ? 'password' : ($field === 'bday' ? 'date' : 'text')) ?>"
                 name="value"
                 id="pswd"
                 class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"

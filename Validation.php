@@ -13,9 +13,9 @@ class Validation {
         foreach ($rules as $camp => $campRules) {
             //$rule = required, $rule = email, $rule = confimed
             foreach ($campRules as $rule) {
-                $campValue = $data[$camp];
+                $campValue = $data[$camp] ?? '';
                 if ($rule == 'confirm') {
-                    $validations->$rule($camp, $campValue, $data['confirmation']);
+                    $validations->$rule($camp, $campValue, $data['confirmation'] ?? '');
                 } elseif (str_contains($rule, ':')){
                     $tmp = explode(':', $rule);
                     $rule = $tmp[0];
@@ -30,7 +30,7 @@ class Validation {
     }
 
     private function required($camp, $value) {
-        if (strlen($value) == 0) {
+        if (trim($value) == '') {
             $this->validations[] = "$camp é obrigatório";
         }
     }

@@ -1,17 +1,22 @@
 <?php
 
-
-
-
-
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $field = $_POST['field'] ?? '';
     $value = trim($_POST['value'] ?? '');
 
-    $validation = Validation::validate([
-        $field => ['required']
-    ], $_POST);
+    // Juntando o campo com o valor passando como parâmetro no validate para o Validation entender ('field' = 'value')
+    $parsedPost = [$field => $value];
+
+    if ($field == 'phone' || $field == 'cpf') {
+        $validation = Validation::validate([
+            $field => ['required', 'min:11', 'max:11']
+        ], $parsedPost);
+    } else {
+        $validation = Validation::validate([
+            $field => ['required']
+        ], $parsedPost);
+    }
+
 
     if ($validation->notPass()) {
         $_SESSION['validation'] = $validation->validations;
@@ -39,18 +44,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         return $cpf;
     }
 
-    function formatAddress($addr)
+    function formatAddr($addr)
     {
         return ucwords(mb_strtolower($addr));
     }
 
-    function formatBirthdate($date)
+    function formatBday($date)
     {
-        // Se estiver no formato dd/mm/yyyy, converter para yyyy-mm-dd
-        if (preg_match('/^(\d{2})\/(\d{2})\/(\d{4})$/', $date, $m)) {
-            return "{$m[3]}-{$m[2]}-{$m[1]}";
+        // Se estiver no formato yyyy-mm-dd, converter para dd/mm/yyyy
+        if (preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $date, $m)) {
+            return "{$m[3]}/{$m[2]}/{$m[1]}";
         }
-        return $date; // caso já esteja em yyyy-mm-dd
+        return $date; // Caso já esteja em dd/mm/yyyy
     }
 
     // Aplicar formatação conforme o campo
@@ -62,10 +67,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $value = formatCPF($value);
             break;
         case 'addr':
-            $value = formatAddress($value);
+            $value = formatAddr($value);
             break;
         case 'bday':
-            $value = formatBirthdate($value);
+            $value = formatBday($value);
             break;
     }
 
@@ -73,8 +78,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $hash = password_hash($value, PASSWORD_DEFAULT);
 
         $db->query(
-            query: "UPDATE users SET $field = $hash WHERE id = :id",
+            query: "UPDATE users SET $field = :hash WHERE id = :id",
             params: [
+                'hash' => $hash,
                 'id' => $_SESSION['idUser']
             ]
         );
@@ -83,9 +89,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
+
     $db->query(
-        query: "UPDATE users SET $field = $value WHERE id = :id",
+        query: "UPDATE users SET $field = :value WHERE id = :id",
         params: [
+            'value' => $value,
             'id' => $_SESSION['idUser']
         ]
     );
