@@ -34,7 +34,7 @@
                     <div class="flex justify-between items-center">
                         <div>
                             <p class="text-gray-500 text-sm">Data de Criação</p>
-                            <p class="text-lg font-medium text-gray-800"><?= htmlspecialchars($busi['register']) ?></p>
+                            <p class="text-lg font-medium text-gray-800"><?= formatDate(htmlspecialchars($busi['register'])) ?></p>
                         </div>
                     </div>
 
