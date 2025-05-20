@@ -1,6 +1,6 @@
 <?php
 
-// Verificando se existe um login na sessão
+// Verificando se existe o login digitado
 $user = $db->query(
     query: 'SELECT * FROM users WHERE id = :id',
     params: [

@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Verifica se houve erro na validação
     if($validation->notPass()){
         $_SESSION['validation'] = $validation->validations;
-        header('Location: /register');
+        header('Location: /registerUser');
         exit();
     } else {
         $hash = password_hash($_POST['pswd'], PASSWORD_DEFAULT);
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Verifica se existe o email digitado já cadastrado
     if ($auth) {
         $_SESSION['error'] = "Email ja cadastrado!";
-        header('Location: /register');
+        header('Location: /registerUser');
         exit();
     }
 
@@ -43,10 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $_SESSION['message'] = "Usuario cadastrado com sucesso!";
 
-    header('Location: /register');
+    header('Location: /registerUser');
     exit();
 } else {
-    view('register');
+    view('registerUser');
 }
 
 ?>

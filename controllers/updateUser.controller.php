@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Se a atualização de cadastro for de telefone ou CPF irá ter min e max de caracteres de 11
     if ($field == 'phone' || $field == 'cpf') {
         $validation = Validation::validate([
-            $field => ['required', 'min:11', 'max:11']
+            $field => ['required', 'min:11', 'max:14']
         ], $parsedPost);
     } else {
         $validation = Validation::validate([
@@ -26,37 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    function formatPhone($phone) {
-        $digits = preg_replace('/\D/', '', $phone);
-        if (strlen($digits) === 11) {
-            return preg_replace('/(\d{2})(\d{5})(\d{4})/', '($1) $2-$3', $digits);
-        } elseif (strlen($digits) === 10) {
-            return preg_replace('/(\d{2})(\d{4})(\d{4})/', '($1) $2-$3', $digits);
-        }
-        return $phone;
-    }
-
-    function formatCPF($cpf) {
-        $digits = preg_replace('/\D/', '', $cpf);
-        if (strlen($digits) === 11) {
-            return preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $digits);
-        }
-        return $cpf;
-    }
-
-    function formatAddr($addr) {
-        return ucwords(mb_strtolower($addr));
-    }
-
-    function formatBday($date) {
-        // Se estiver no formato yyyy-mm-dd, converter para dd/mm/yyyy
-        if (preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $date, $m)) {
-            return "{$m[3]}/{$m[2]}/{$m[1]}";
-        }
-        // Caso já esteja em dd/mm/yyyy
-        return $date;
-    }
-
     // Aplicar formatação conforme o campo
     switch ($field) {
         case 'phone':
@@ -69,8 +38,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $value = formatAddr($value);
             break;
         case 'bday':
-            $value = formatBday($value);
+            $value = formatDate($value);
             break;
+    }
+
+    // Busca no banco o email digitado
+    $auth = $db->query(
+        query: 'SELECT * FROM users WHERE email = :email',
+        params: [
+            'email' => $_POST['email']
+        ]
+    )->fetch();
+
+    // Verifica se existe o cnpj digitado já cadastrado
+    if ($auth) {
+        $_SESSION['error'] = "Email ja cadastrado!";
+        header('Location: /updateUser');
+        exit();
     }
 
     // Se for senha, irá com hash

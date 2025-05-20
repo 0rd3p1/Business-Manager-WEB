@@ -43,6 +43,6 @@
       </div>
       <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition">Entrar</button>
     </form>
-    <p class="mt-4 text-sm text-center">Não tem uma conta? <a href="register" class="text-indigo-600 hover:underline">Registre-se</a></p>
+    <p class="mt-4 text-sm text-center">Não tem uma conta? <a href="registerUser" class="text-indigo-600 hover:underline">Registre-se</a></p>
   </div>
 </div>

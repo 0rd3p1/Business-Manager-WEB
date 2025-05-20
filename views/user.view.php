@@ -89,7 +89,7 @@
             <!-- Botão Ver Empresas -->
             <div class="pt-4">
                 <a href="business" class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md transition">
-                    Ver Empresas
+                    Ver Negócios
                 </a>
             </div>
         </div>
