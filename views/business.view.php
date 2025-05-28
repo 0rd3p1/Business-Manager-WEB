@@ -38,8 +38,12 @@
                         </div>
                     </div>
 
-                    <a href="product?id=<?= $busi['id'] ?>" class="flex place-content-center place-items-center bg-indigo-600 
-                    hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-md transition">Produtos de <?= $busi['name'] ?></a>
+                    <!-- Botão de Produtos -->
+                    <div class="flex items-center">
+                        <a href="product?id=<?= $busi['id'] ?>" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-md transition">
+                            Produtos de <?= $busi['name'] ?>
+                        </a>
+                    </div>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
