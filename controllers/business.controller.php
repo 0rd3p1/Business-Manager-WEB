@@ -1,6 +1,6 @@
 <?php
 
-// Verificando se existe um login na sessão
+// Verificando se existe um negócio cadastrado para mostrar
 $business = $db->query(
     query: 'SELECT * FROM business WHERE idUser = :idUser',
     params: [
