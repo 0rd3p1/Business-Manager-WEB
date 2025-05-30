@@ -15,19 +15,19 @@ if ($field == 'price') {
                 name="value"
                 id="value"
                 class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"/>';
-} elseif ($field == 'name') {
-    $type = '<input
-                type="text"
-                name="value"
-                id="value"
-                class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"/>';
-} else {
+} elseif ($field == 'description') {
     $type = '<textarea 
                 name="description" 
                 id="description" 
                 rows="5" 
                 class="mt-1 w-full p-2 border border-gray-300 rounded resize-y">
                 </textarea>';
+} else {
+    $type = '<input
+                type="text"
+                name="value"
+                id="value"
+                class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"/>';
 }
 
 

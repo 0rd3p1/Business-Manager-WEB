@@ -4,6 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Pega o valor do POST e atribui ás variáveis com segurança 
     $field = $_POST['field'] ?? '';
     $value = trim($_POST['value'] ?? '');
+    $id = $_GET['id'];
 
     // Juntando o campo com o valor passando como parâmetro no validate para o Validation entender ('field' = 'value')
     $parsedPost = [$field => $value];
@@ -18,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Verifica se teve erro na validação
     if ($validation->notPass()) {
         $_SESSION['validation'] = $validation->validations;
-        header("Location: /updateProduct?field=$field");
+        header("Location: /updateProduct?field=$fiel&id=$id");
         exit();
     }
 
@@ -33,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Verifica se existe o cnpj digitado já cadastrado
     if ($auth) {
         $_SESSION['error'] = "Produto já cadastrado!";
-        header('Location: /updateProduct');
+        header("Location: /updateProduct?field=$field&id=$id");
         exit();
     }
 
@@ -41,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         query: "UPDATE products SET $field = :value WHERE id = :id",
         params: [
             'value' => $value,
-            'id' => $product['id']  // NAO ESTA RECEBENDO NENHUM DADO NO ARRAY   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            'id' => $id
         ]
     );
 

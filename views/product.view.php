@@ -28,7 +28,7 @@
                                     <div>
                                         <p class="text-gray-500 text-sm">Nome</p>
                                         <p class="text-lg font-medium text-gray-800"><?= htmlspecialchars($prod['name']) ?></p>
-                                        <a href="updateProduct?field=name" class="text-sm text-blue-600 hover:underline">Alterar</a>
+                                        <a href="updateProduct?field=name&id=<?= $prod['id'] ?>" class="text-sm text-blue-600 hover:underline">Alterar</a>
                                     </div>
                                 </div>
 
@@ -37,7 +37,7 @@
                                     <div>
                                         <p class="text-gray-500 text-sm">Preço</p>
                                         <p class="text-lg font-medium text-gray-800"><?= htmlspecialchars($prod['price']) ?></p>
-                                        <a href="updateProduct?field=price" class="text-sm text-blue-600 hover:underline">Alterar</a>
+                                        <a href="updateProduct?field=price&id=<?= $prod['id'] ?>" class="text-sm text-blue-600 hover:underline">Alterar</a>
                                     </div>
                                 </div>
 
@@ -46,7 +46,7 @@
                                     <div>
                                         <p class="text-gray-500 text-sm">Descrição</p>
                                         <p class="text-lg font-medium text-gray-800"><?= $prod['description'] ?></p>
-                                        <a href="updateProduct?field=description" class="text-sm text-blue-600 hover:underline">Alterar</a>
+                                        <a href="updateProduct?field=description&id=<?= $prod['id'] ?>" class="text-sm text-blue-600 hover:underline">Alterar</a>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
