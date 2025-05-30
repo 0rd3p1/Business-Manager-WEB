@@ -10,38 +10,41 @@
                 <a href="registerBusiness" class="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md transition">Cadastrar Agora</a>
             </div>
         <?php else: ?>
-            <div class="grid gap-6 md:grid-cols-4">
+            <div class="grid gap-6 md:grid-cols-5">
                 <?php foreach ($business as $busi): ?>
                     <!-- Nome -->
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-gray-500 text-sm">Nome</p>
-                            <p class="text-lg font-medium text-gray-800"><?= htmlspecialchars($busi['name']) ?></p>
-                            <a href="updateBusiness?field=name" class="text-sm text-blue-600 hover:underline">Alterar</a>
-                        </div>
+                    <div class="flex flex-col justify-between">
+                        <p class="text-gray-500 text-sm">Nome</p>
+                        <p class="text-lg font-medium text-gray-800"><?= htmlspecialchars($busi['name']) ?></p>
+                        <a href="updateBusiness?field=name" class="text-sm text-blue-600 hover:underline">Alterar</a>
                     </div>
 
                     <!-- CNPJ -->
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-gray-500 text-sm">CNPJ</p>
-                            <p class="text-lg font-medium text-gray-800"><?= htmlspecialchars($busi['cnpj']) ?></p>
-                            <a href="updateBusiness?field=cnpj" class="text-sm text-blue-600 hover:underline">Alterar</a>
-                        </div>
+                    <div class="flex flex-col justify-between">
+                        <p class="text-gray-500 text-sm">CNPJ</p>
+                        <p class="text-lg font-medium text-gray-800"><?= htmlspecialchars($busi['cnpj']) ?></p>
+                        <a href="updateBusiness?field=cnpj" class="text-sm text-blue-600 hover:underline">Alterar</a>
                     </div>
 
-                    <!-- Criação -->
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-gray-500 text-sm">Data de Criação</p>
-                            <p class="text-lg font-medium text-gray-800"><?= formatDate(htmlspecialchars($busi['register'])) ?></p>
-                        </div>
+                    <!-- Data de Criação -->
+                    <div class="flex flex-col justify-top">
+                        <p class="text-gray-500 text-sm">Data de Criação</p>
+                        <p class="text-lg font-medium text-gray-800"><?= formatDate(htmlspecialchars($busi['register'])) ?></p>
                     </div>
 
-                    <!-- Botão de Produtos -->
+                    <!-- Botão Produtos -->
                     <div class="flex items-center">
-                        <a href="product?idBusiness=<?= $busi['id'] ?>" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-md transition">
-                            Produtos de <?= $busi['name'] ?>
+                        <a href="product?idBusiness=<?= $busi['id'] ?>"
+                            class="w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-md transition">
+                            Produtos
+                        </a>
+                    </div>
+
+                    <!-- Botão Excluir -->
+                    <div class="flex items-center">
+                        <a href="delete?id=<?= $busi['id'] ?>&table=business"
+                            class="w-full text-center bg-red-600 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded-md transition">
+                            Excluir
                         </a>
                     </div>
                 <?php endforeach; ?>

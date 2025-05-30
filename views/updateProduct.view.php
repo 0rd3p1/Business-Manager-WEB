@@ -5,6 +5,7 @@ $field = $_GET['field'] ?? null;
 $fields = [
     'name' => 'Nome',
     'price' => 'Preço',
+    'stock' => 'Estoque',
     'description' => 'Descrição'
 ];
 
@@ -22,6 +23,12 @@ if ($field == 'price') {
                 rows="5" 
                 class="mt-1 w-full p-2 border border-gray-300 rounded resize-y">
                 </textarea>';
+} elseif ($field == 'stock') {
+    $type = '<input
+                type="number"
+                name="value"
+                id="value"
+                class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"/>';
 } else {
     $type = '<input
                 type="text"

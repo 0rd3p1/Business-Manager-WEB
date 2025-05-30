@@ -7,7 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Aplica as Validaçoes
     $validation = Validation::validate([
         'name' => ['required'],
-        'price' => ['required']
+        'price' => ['required'],
+        'stock' => ['required']
     ], $_POST);
 
     // Verifica se houve erro na validação
@@ -32,10 +33,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $db->query(
-        query: 'INSERT INTO products (name, price, description, idBusiness) VALUES (:name, :price, :description, :idBusiness)',
+        query: 'INSERT INTO products (name, price, stock, description, idBusiness) VALUES (:name, :price, :stock, :description, :idBusiness)',
         params: [
             'name' => $_POST['name'],
             'price' => $_POST['price'],
+            'stock' => $_POST['stock'],
             'description' => $_POST['description'],
             'idBusiness' => $_GET['idBusiness']
         ]

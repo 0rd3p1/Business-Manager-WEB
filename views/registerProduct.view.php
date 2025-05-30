@@ -35,6 +35,11 @@
         <label for="price" class="block text-sm font-medium">Preço</label>
         <input type="number" step="0.01" name="price" id="price" class="mt-1 w-full p-2 border border-gray-300 rounded">
       </div>
+      <!-- Estoque -->
+      <div>
+        <label for="stock" class="block text-sm font-medium">Estoque</label>
+        <input type="number" name="stock" id="stock" class="mt-1 w-full p-2 border border-gray-300 rounded">
+      </div>
       <!-- Descrição -->
       <div>
         <label for="description" class="block text-sm font-medium">Descrição</label>

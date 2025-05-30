@@ -7,6 +7,4 @@ class User {
     public $pswd;
 }
 
-$user = new User;
-
 ?>

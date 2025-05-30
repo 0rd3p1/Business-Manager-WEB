@@ -2,7 +2,16 @@
     <div class="bg-white shadow rounded-lg p-6">
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-xl font-semibold text-blue-600">Minha Conta</h2>
-            <a href="logout" class="bg-red-600 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded-md transition">Sair</a>
+            <div>
+                <!-- Botão Sair -->
+                <a href="logout" class="bg-red-600 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded-md transition">Sair</a>
+                <!-- Botão de exclusão -->
+                <a href="delete?id=<?= $user['id'] ?>&table=users"
+                    class="bg-gray-600 hover:bg-gray-700 text-white text-sm font-medium px-4 py-2 rounded-md transition">
+                    Excluir
+                </a>
+            </div>
+
         </div>
 
         <div class="space-y-6">

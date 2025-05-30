@@ -9,8 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Juntando o campo com o valor passando como parâmetro no validate para o Validation entender ('field' = 'value')
     $parsedPost = [$field => $value];
 
-    // Se a atualização de cadastro for de telefone ou CPF irá ter min e max de caracteres de 11
-    if ($field == 'name' || $field == 'price') {
+    if ($field == 'name' || $field == 'price' || $field == 'stock') {
         $validation = Validation::validate([
             $field => ['required']
         ], $parsedPost);
@@ -23,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    // Busca no banco o cnpj digitado
+    // Busca no banco o produto digitado
     $auth = $db->query(
         query: 'SELECT * FROM products WHERE name = :name',
         params: [
@@ -31,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ]
     )->fetch();
 
-    // Verifica se existe o cnpj digitado já cadastrado
+    // Verifica se existe o produto digitado já cadastrado
     if ($auth) {
         $_SESSION['error'] = "Produto já cadastrado!";
         header("Location: /updateProduct?field=$field&id=$id");
