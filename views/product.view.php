@@ -47,11 +47,13 @@
                                     </div>
 
                                     <div class="flex gap-2 mt-6">
-                                        <!-- Botão de pagamento -->
-                                        <a href="payment?id=<?= $prod['id'] ?>"
-                                            class="flex-1 text-center bg-green-600 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded-md transition">
-                                            Pagar
-                                        </a>
+                                        <?php if ($prod > 0): ?>
+                                            <!-- Botão de pagamento -->
+                                            <a href="payment?id=<?= $prod['id'] ?>"
+                                                class="flex-1 text-center bg-green-600 hover:bg-green-700 text-white text-sm font-medium px-4 py-2 rounded-md transition">
+                                                Pagar
+                                            </a>
+                                        <?php endif; ?>
 
                                         <!-- Botão de exclusão -->
                                         <a href="delete?id=<?= $prod['id'] ?>&table=products"
