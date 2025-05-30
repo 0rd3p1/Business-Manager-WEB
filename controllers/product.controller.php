@@ -2,9 +2,9 @@
 
 // Verificando os produtos cadastrados por negócio
 $product = $db->query(
-    query: 'SELECT * FROM products WHERE id = :id',
+    query: 'SELECT * FROM products WHERE idBusiness = :idBusiness',
     params: [
-        'id' => $_GET['id']
+        'idBusiness' => $_GET['idBusiness']
     ]
 )->fetchAll();
 
@@ -16,6 +16,6 @@ $business = $db->query(
     ]
 )->fetchAll();
 
-view('product', compact('product'), compact('business'))
+view('product', compact('business', 'product'))
 
 ?>

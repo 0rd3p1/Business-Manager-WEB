@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Verifica se existe o cnpj digitado já cadastrado
     if ($auth) {
         $_SESSION['error'] = "CNPJ ja cadastrado!";
-        header('Location: /registerUser');
+        header('Location: /registerBusiness');
         exit();
     }
 

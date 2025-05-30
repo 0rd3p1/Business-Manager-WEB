@@ -30,7 +30,7 @@
                         </div>
                     </div>
 
-                    <!-- Nome -->
+                    <!-- Criação -->
                     <div class="flex justify-between items-center">
                         <div>
                             <p class="text-gray-500 text-sm">Data de Criação</p>
@@ -40,7 +40,7 @@
 
                     <!-- Botão de Produtos -->
                     <div class="flex items-center">
-                        <a href="product?id=<?= $busi['id'] ?>" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-md transition">
+                        <a href="product?idBusiness=<?= $busi['id'] ?>" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-md transition">
                             Produtos de <?= $busi['name'] ?>
                         </a>
                     </div>
