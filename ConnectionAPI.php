@@ -7,10 +7,10 @@ class ConnectionAPI {
         $this->apiUrl = rtrim($apiUrl, '/');
     }
 
-    public function responseAPI($endpoint, $data = []) {
+    public function responseAPI($data = []) {
         $jsonData = json_encode($data);
 
-        $ch = curl_init($this->apiUrl . $endpoint);
+        $ch = curl_init($this->apiUrl . '/api/payment');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
