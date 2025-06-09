@@ -3,14 +3,14 @@
 class Validation {
     public $validations;
     public $camps = [
-            'name' => 'Nome',
-            'email' => 'Email',
-            'pswd' => 'Senha',
-            'cpnj' => 'CNPJ',
-            'cpf' => 'CPF',
-            'price' => 'Preço',
-            'description' => 'Descrição',
-            'stock' => 'Estoque'
+            'name' => 'O Nome',
+            'email' => 'O Email',
+            'pswd' => 'A Senha',
+            'cpnj' => 'O CNPJ',
+            'cpf' => 'O CPF',
+            'price' => 'O Preço',
+            'description' => 'A Descrição',
+            'stock' => 'O Estoque'
         ];
 
     public function __construct() {
