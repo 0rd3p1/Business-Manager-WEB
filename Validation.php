@@ -2,6 +2,16 @@
 
 class Validation {
     public $validations;
+    public $camps = [
+            'name' => 'Nome',
+            'email' => 'Email',
+            'pswd' => 'Senha',
+            'cpnj' => 'CNPJ',
+            'cpf' => 'CPF',
+            'price' => 'Preço',
+            'description' => 'Descrição',
+            'stock' => 'Estoque'
+        ];
 
     public function __construct() {
         $this->validations = [];
@@ -16,10 +26,10 @@ class Validation {
                 $campValue = $data[$camp] ?? '';
                 if ($rule == 'confirm') {
                     $validations->$rule($camp, $campValue, $data['confirmation'] ?? '');
-                } elseif (str_contains($rule, ':')){
+                } elseif (str_contains($rule, ':')) {
                     $tmp = explode(':', $rule);
                     $rule = $tmp[0];
-                    $ruleAr = $tmp[1];  
+                    $ruleAr = $tmp[1];
                     $validations->$rule($ruleAr, $camp, $campValue);
                 } else {
                     $validations->$rule($camp, $campValue);
@@ -31,10 +41,10 @@ class Validation {
 
     private function required($camp, $value) {
         if (trim($value) == '') {
-            $this->validations[] = "$camp é obrigatório";
+            $this->validations[] = $this->camps[$camp] . " é obrigatório";
         }
     }
-    private function email($camp, $value) {
+    private function email($value) {
         if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
             $this->validations[] = "Email inválido";
         }
@@ -42,25 +52,25 @@ class Validation {
 
     private function confirm($camp, $value, $confirmValue) {
         if ($value != $confirmValue) {
-            $this->validations[] = "$camp de confirmação esta diferente";
+            $this->validations[] = $this->camps[$camp] . " de confirmação esta diferente";
         }
     }
 
     public function strong($camp, $value) {
         if (!strpbrk($value, '!@#$%^*&?.')) {
-            $this->validations[] = "$camp precisa ter no mínimo um caracter especial";
+            $this->validations[] = $this->camps[$camp] . " precisa ter no mínimo um caracter especial";
         }
     }
 
-    public function min ($min, $camp, $value) {
+    public function min($min, $camp, $value) {
         if (strlen($value) < $min) {
-            $this->validations[] = "$camp precisa ter no mínimo $min caracteres";
+            $this->validations[] = $this->camps[$camp] . " precisa ter no mínimo $min caracteres";
         }
     }
 
-    public function max ($max, $camp, $value) {
+    public function max($max, $camp, $value) {
         if (strlen($value) > $max) {
-            $this->validations[] = "$camp pode ter no máximo $max caracteres";
+            $this->validations[] = $this->camps[$camp] . " pode ter no máximo $max caracteres";
         }
     }
 
