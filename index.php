@@ -19,6 +19,4 @@ require 'ConnectionAPI.php';
 
 require 'routes.php';
 
-//session_unset();
-
 ?>
