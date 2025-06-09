@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto px-4 text-center">
         <h2 class="text-4xl font-bold mb-4">Solução Completa para Gerenciar sua Empresa</h2>
         <p class="text-lg mb-6">Controle de produtos, pagamento e muito mais em um só lugar.</p>
-        <a href="register" class="bg-white text-indigo-600 font-semibold px-6 py-3 rounded shadow hover:bg-gray-100">Comece Agora</a>
+        <a href="registerUser" class="bg-white text-indigo-600 font-semibold px-6 py-3 rounded shadow hover:bg-gray-100">Comece Agora</a>
     </div>
 </section>
 
