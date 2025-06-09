@@ -15,5 +15,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: /product");
     exit;
 } else {
-    view('payment', compact('product'));
+    //view('payment', compact('product'));
 }
