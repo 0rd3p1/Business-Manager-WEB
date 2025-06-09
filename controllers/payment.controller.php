@@ -16,4 +16,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 } else {
     //view('payment', compact('product'));
+    abort(404);
 }
