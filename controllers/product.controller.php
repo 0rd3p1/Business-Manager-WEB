@@ -4,7 +4,7 @@
 $product = $db->query(
     query: 'SELECT * FROM products WHERE idBusiness = :idBusiness',
     params: [
-        'idBusiness' => $_GET['idBusiness']
+        'idBusiness' => $_GET['idBusiness'] ?? ''
     ]
 )->fetchAll();
 
