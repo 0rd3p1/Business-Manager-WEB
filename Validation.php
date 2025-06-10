@@ -44,7 +44,7 @@ class Validation {
             $this->validations[] = $this->camps[$camp] . " é obrigatório";
         }
     }
-    private function email($value) {
+    private function email($camp, $value) {
         if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
             $this->validations[] = "Email inválido";
         }
