@@ -8,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $validation = Validation::validate([
         'name' => ['required'],
         'price' => ['required'],
-        'stock' => ['required']
     ], $_POST);
 
     // Verifica se houve erro na validação
@@ -32,12 +31,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header("Location: /registerProduct?idBusiness=$idBusiness");
     }
 
+    if ($_POST['stock'] == null) {
+        $stock = 0;
+    }
+
     $db->query(
         query: 'INSERT INTO products (name, price, stock, description, idBusiness) VALUES (:name, :price, :stock, :description, :idBusiness)',
         params: [
             'name' => $_POST['name'],
             'price' => $_POST['price'],
-            'stock' => $_POST['stock'],
+            'stock' => $stock,
             'description' => $_POST['description'],
             'idBusiness' => $_GET['idBusiness']
         ]
